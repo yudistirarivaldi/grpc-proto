@@ -51,7 +51,6 @@ endif
 .PHONY: protoc-go-gateway
 protoc-go-gateway:
 	protoc -I . \
-	--grpc-gateway_out ./protogen/gateway/go \
 	--grpc-gateway_opt logtostderr=true \
 	--grpc-gateway_opt paths=source_relative \
 	--grpc-gateway_opt grpc_api_configuration=./grpc-gateway/config.yml \
