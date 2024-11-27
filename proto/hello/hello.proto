@@ -4,10 +4,11 @@ package hello;
 
 // replace this with your own github username and repo
 // github.com/<username>/<repo>/protogen/go/... 
-option go_package = "github.com/yudistirarivaldi/mgrpc-proto/protogen/go/hello";
+option go_package = "github.com/yudistirarivaldi/grpc-proto/protogen/go/hello";
 
 message HelloRequest { 
   string name = 1;
+  string address = 2;
   uint32 age = 16;
 }
 
@@ -17,5 +18,5 @@ message HelloResponse {
 
 service HelloService {
   rpc SayHello(HelloRequest) returns (HelloResponse) {}
-  
+
 }
