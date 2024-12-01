@@ -29,9 +29,9 @@ paths:
             $ref: '#/definitions/helloHelloRequest'
       tags:
         - HelloService
-  /hello.HelloService/SayManyHelloss:
+  /hello.HelloService/SayManyHellos:
     post:
-      operationId: HelloService_SayManyHelloss
+      operationId: HelloService_SayManyHellos
       responses:
         "200":
           description: A successful response.(streaming responses)
