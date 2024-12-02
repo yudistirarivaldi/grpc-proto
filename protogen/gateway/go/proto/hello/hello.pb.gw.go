@@ -80,9 +80,9 @@ func request_HelloService_SayManyHellos_0(ctx context.Context, marshaler runtime
 	return stream, metadata, nil
 }
 
-func request_HelloService_SayHelloToEveryon_0(ctx context.Context, marshaler runtime.Marshaler, client extHello.HelloServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_HelloService_SayHelloToEveryone_0(ctx context.Context, marshaler runtime.Marshaler, client extHello.HelloServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var metadata runtime.ServerMetadata
-	stream, err := client.SayHelloToEveryon(ctx)
+	stream, err := client.SayHelloToEveryone(ctx)
 	if err != nil {
 		grpclog.Errorf("Failed to start streaming: %v", err)
 		return nil, metadata, err
@@ -155,7 +155,7 @@ func RegisterHelloServiceHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		return
 	})
 
-	mux.Handle(http.MethodPost, pattern_HelloService_SayHelloToEveryon_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_HelloService_SayHelloToEveryone_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
 		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
@@ -235,34 +235,34 @@ func RegisterHelloServiceHandlerClient(ctx context.Context, mux *runtime.ServeMu
 		}
 		forward_HelloService_SayManyHellos_0(annotatedContext, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 	})
-	mux.Handle(http.MethodPost, pattern_HelloService_SayHelloToEveryon_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle(http.MethodPost, pattern_HelloService_SayHelloToEveryone_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hello.HelloService/SayHelloToEveryon", runtime.WithHTTPPathPattern("/hello.HelloService/SayHelloToEveryon"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/hello.HelloService/SayHelloToEveryone", runtime.WithHTTPPathPattern("/hello.HelloService/SayHelloToEveryone"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_HelloService_SayHelloToEveryon_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_HelloService_SayHelloToEveryone_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		forward_HelloService_SayHelloToEveryon_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_HelloService_SayHelloToEveryone_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 	})
 	return nil
 }
 
 var (
-	pattern_HelloService_SayHello_0          = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"hello.HelloService", "SayHello"}, ""))
-	pattern_HelloService_SayManyHellos_0     = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"hello.HelloService", "SayManyHellos"}, ""))
-	pattern_HelloService_SayHelloToEveryon_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"hello.HelloService", "SayHelloToEveryon"}, ""))
+	pattern_HelloService_SayHello_0           = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"hello.HelloService", "SayHello"}, ""))
+	pattern_HelloService_SayManyHellos_0      = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"hello.HelloService", "SayManyHellos"}, ""))
+	pattern_HelloService_SayHelloToEveryone_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"hello.HelloService", "SayHelloToEveryone"}, ""))
 )
 
 var (
-	forward_HelloService_SayHello_0          = runtime.ForwardResponseMessage
-	forward_HelloService_SayManyHellos_0     = runtime.ForwardResponseStream
-	forward_HelloService_SayHelloToEveryon_0 = runtime.ForwardResponseMessage
+	forward_HelloService_SayHello_0           = runtime.ForwardResponseMessage
+	forward_HelloService_SayManyHellos_0      = runtime.ForwardResponseStream
+	forward_HelloService_SayHelloToEveryone_0 = runtime.ForwardResponseMessage
 )

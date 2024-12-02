@@ -29,9 +29,9 @@ paths:
             $ref: '#/definitions/helloHelloRequest'
       tags:
         - HelloService
-  /hello.HelloService/SayHelloToEveryon:
+  /hello.HelloService/SayHelloToEveryone:
     post:
-      operationId: HelloService_SayHelloToEveryon
+      operationId: HelloService_SayHelloToEveryone
       responses:
         "200":
           description: A successful response.
