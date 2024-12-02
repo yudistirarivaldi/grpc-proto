@@ -19,7 +19,7 @@ message HelloResponse {
 service HelloService {
   rpc SayHello(HelloRequest) returns (HelloResponse) {}
   rpc SayManyHellos(HelloRequest) returns (stream HelloResponse) {}
-  rpc SayHelloToEveryon(stream HelloRequest) returns (HelloResponse) {}
+  rpc SayHelloToEveryone(stream HelloRequest) returns (HelloResponse) {}
 }
 
 
